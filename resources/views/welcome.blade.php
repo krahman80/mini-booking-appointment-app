@@ -1,23 +1,28 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            body {
-                font-family: 'Nunito', sans-serif;
-            }
-        </style>
-        <link rel="stylesheet" href="{{ asset('css/app.css')}}">
-    </head>
-    <body>
-        hello
-    </body>
-</html>
+@extends('layouts.app')
+@section('content')
+    <nav class="flex w-1/2 mx-auto bg-white justify-between my-2 p-2 rounded-sm">
+        <div>
+            <ul class="flex pl-0 list-style-none mr-auto">
+                <li class="p-2">
+                  <a href="#">Dashboard</a>
+                </li>
+                <li class="p-2">
+                  <a href="#">Team</a>
+                </li>
+                <li class="p-2">
+                  <a href="#">Projects</a>
+                </li>
+              </ul>
+        </div>
+        <div>
+            <ul class="flex pl-0 list-style-none mr-auto">
+                <li class="p-2">
+                    <a href="#">login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="flex w-1/2 mx-auto bg-white p-2 rounded-sm">
+        test
+    </div>
+@endsection
