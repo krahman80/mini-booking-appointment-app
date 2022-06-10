@@ -15,9 +15,16 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
+
+        <script src="{{ asset('js/app.js')}} "></script>
         <link rel="stylesheet" href="{{ asset('css/app.css')}}">
+        <link rel="stylesheet" href="{{ asset('css/flatpickr.css')}}">
+
+        {{-- <link rel="stylesheet" href="{{ asset('css/pikaday.css')}}"> --}}
     </head>
-    <body class="bg-gray-200">
+    <body class="bg-blue-200">
+        {{-- @include('layouts.nav') --}}
         @yield('content')
+        @yield('script')
     </body>
 </html>

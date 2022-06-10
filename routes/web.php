@@ -14,8 +14,10 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/calendar', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('calendar');
+Route::get('/calendar/edit', [HomeController::class, 'edit'])->name('calendar.edit');
+Route::post('calendar/show', [HomeController::class, 'show'])->name('calendar.show');

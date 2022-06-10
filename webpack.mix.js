@@ -12,6 +12,8 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
+    // mix.copy('node_modules/pikaday/css/pikaday.css', 'public/css/pikaday.css')
+    .mix.copy('node_modules/flatpickr/dist/flatpickr.css', 'public/css/flatpickr.css')
     .postCss('resources/css/app.css', 'public/css', [
         require('tailwindcss')
     ]);
