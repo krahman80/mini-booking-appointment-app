@@ -19,5 +19,5 @@ use App\Http\Controllers\HomeController;
 // });
 
 Route::get('/', [HomeController::class, 'index'])->name('calendar');
-Route::get('/calendar/edit', [HomeController::class, 'edit'])->name('calendar.edit');
 Route::post('calendar/show', [HomeController::class, 'show'])->name('calendar.show');
+Route::post('calendar/book', [HomeController::class, 'book'])->name('calendar.book');

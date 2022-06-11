@@ -9,6 +9,7 @@ use Illuminate\Support\Collection;
 
 class TimeSlot 
 {
+    private $booked;
     private $unavailable;
     private $date;
     private $startTime;
@@ -16,7 +17,8 @@ class TimeSlot
     private $duration;
     private $break;
 
-    public function __construct($unavailable, $date, $startTime, $endTime, $duration = 45, $break = null) {
+    public function __construct($booked, $unavailable, $date, $startTime, $endTime, $duration = 45, $break = null) {
+        $this->booked = $booked;
         $this->unavailable = $unavailable;
         $this->date = $date;
         $this->startTime = $startTime;
@@ -52,8 +54,8 @@ class TimeSlot
                     {
                         if($time->format('H:i') < '12:00' || $time->format('H:i') >= '13:00') 
                         {
+                            
                             $coll->push(
-                                (object)
                                 [
                                     'date' => $time->format('Y-m-d'),
                                     'start' => $time->format('H:i'),
@@ -63,7 +65,25 @@ class TimeSlot
                         }
                     }
             }
-            return $coll;
+            
+            if($this->booked){
+                $unbooked = new Collection;
+                foreach ($coll as $timeslot) {
+                    foreach ($this->booked as $item) {
+                        if($timeslot['start'] != $item['start']){
+                            $unbooked->push([
+                                'date' => $timeslot['date'],
+                                'start' => $timeslot['start'],
+                                'end' => $timeslot['end'],
+                            ]);
+                        } 
+                    }
+                }
+                return $unbooked;
+            } else {
+                return $coll;
+            }
+
         }
 
     }

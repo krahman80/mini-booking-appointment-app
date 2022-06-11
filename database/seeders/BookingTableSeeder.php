@@ -14,11 +14,22 @@ class BookingTableSeeder extends Seeder
      */
     public function run()
     {
+        $ticket = Booking::generateTicket();
+
         Booking::create([
-            'date' => '2022-05-23',
+            'ticket' => $ticket,
+            'date' => '2022-06-13',
             'start' => '09:00',
             'end' => '09:45',
         ]);
 
+        $ticket2 = Booking::generateTicket();
+        Booking::create([
+            'ticket' => $ticket2,
+            'date' => '2022-06-14',
+            'start' => '09:45',
+            'end' => '10:30',
+        ]);
+        
     }
 }

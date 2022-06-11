@@ -4,6 +4,7 @@
     
     <div class="w-full bg-white p-6 rounded-sm">
         <h1 class="my-2 text-center text-xl">Appointment Booking Application</h1>
+        @include('layouts.msg')
         <form action="{{ route('calendar.show') }}" method="post" class="mb-4">
             @csrf
             <div>

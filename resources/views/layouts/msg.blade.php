@@ -1,0 +1,7 @@
+@if ($errors->any())
+    <ul id="errors" class="my-2 text-center">
+        @foreach ($errors->all() as $error)
+            <li class="bg-red-400 p-2 text-white text-sm rounded-sm">{{ $error }}</li>
+        @endforeach
+    </ul>
+@endif
