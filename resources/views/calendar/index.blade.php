@@ -1,9 +1,8 @@
 @extends('layouts.app')
 @section('content')
 <div class="flex w-1/4 mx-auto justify-between p-2">
-    
     <div class="w-full bg-white p-6 rounded-sm">
-        <h1 class="my-2 text-center text-xl">Appointment Booking Application</h1>
+        <h1 class="mb-2 text-center text-xl">Book an appointment</h1>
         @include('layouts.msg')
         <form action="{{ route('calendar.show') }}" method="post" class="mb-4">
             @csrf
@@ -15,7 +14,6 @@
             <div>
                 <input type="submit" value="submit" class="w-full my-2 p-1 bg-blue-500 text-white rounded-sm">
             </div>
-
         </form>
     </div>
 </div>

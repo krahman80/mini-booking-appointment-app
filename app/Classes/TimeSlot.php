@@ -69,15 +69,19 @@ class TimeSlot
             if($this->booked){
                 $unbooked = new Collection;
                 foreach ($coll as $timeslot) {
+                    $duplicate = false;
                     foreach ($this->booked as $item) {
-                        if($timeslot['start'] != $item['start']){
-                            $unbooked->push([
-                                'date' => $timeslot['date'],
-                                'start' => $timeslot['start'],
-                                'end' => $timeslot['end'],
-                            ]);
-                        } 
+                        if($timeslot['start'] === $item['start']) $duplicate = true;      
                     }
+                    if($duplicate === false)
+                    {
+                        $unbooked->push([
+                            'date' => $timeslot['date'],
+                            'start' => $timeslot['start'],
+                            'end' => $timeslot['end'],
+                            // 'test' => $item['start'],
+                        ]);
+                    } 
                 }
                 return $unbooked;
             } else {

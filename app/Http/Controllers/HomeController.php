@@ -29,6 +29,12 @@ class HomeController extends Controller
         ]);
 
         $booked = Booking::where('date', $request->input('date'))->get()->toArray();
+        // $tt = new Collection;
+        // foreach ($booked as $value) {
+        //     $tt->push(['start' => $value['start']]);
+        // }
+
+        // dd($booked);
 
         $unavailable = Unavailable::where('date', $request->input('date'))->count();
 
@@ -42,14 +48,27 @@ class HomeController extends Controller
             '0');
 
         $results = $time_slot->getTimeSlot();
-        
-        // dd($result);
         return view('calendar.show', ['time_slots' => $results]);
 
     }
 
     public function book(Request $request) {
-        dd($request->input());
+
+        $request->validate([
+            'date' => 'required|date|date_format:Y-m-d',
+            'start' => 'required',
+            'end' => 'required',
+        ]);
+
+        $key = Booking::generateTicket();
+        $booking = Booking::create([
+            'ticket' => $key,
+            'date' => $request->input('date'),
+            'start' => $request->input('start'),
+            'end' => $request->input('end'),
+        ]);
+
+        dd($booking);
     }
    
 }

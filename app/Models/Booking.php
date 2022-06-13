@@ -10,6 +10,8 @@ class Booking extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['ticket', 'date', 'start', 'end'];
+
     public function getStartAttribute($value) {
         return substr($value, 0, -3);
     }
