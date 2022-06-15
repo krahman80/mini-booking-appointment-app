@@ -8,9 +8,27 @@
     </div>
     <div>
         <ul class="flex list-style-none mr-auto">
-          <li class="p-1">
-              <a href="#">login</a>
+            @auth()
+            <li class="p-1">
+              <a href="{{ route('logout') }}" 
+                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                Logout
+              </a> 
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+              </form>
+            </li>
+            <li class="p-1">
+              Welcome, {{ auth()->user()->name }}
+            </li>
+            @endauth
+            @guest
+            <li class="p-1">
+              <a href="{{ route('login') }}">Login</a>
+            </li>
+            @endguest
           </li>
+
         </ul>
     </div>
   </div>

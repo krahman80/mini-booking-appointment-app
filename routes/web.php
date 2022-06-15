@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,7 @@ use App\Http\Controllers\HomeController;
 Route::get('/', [HomeController::class, 'index'])->name('calendar');
 Route::post('calendar/show', [HomeController::class, 'show'])->name('calendar.show');
 Route::post('calendar/book', [HomeController::class, 'book'])->name('calendar.book');
+
+Route::get('login', [AuthController::class, 'login'])->name('login');
+Route::post('login', [AuthController::class, 'loginAction'])->name('login');
+Route::post('logout', [AuthController::class, 'logout'])->middleware(['auth'])->name('logout');
