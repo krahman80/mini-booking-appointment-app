@@ -5,10 +5,12 @@
     <div class="w-full bg-white p-6 rounded-sm">
         <h1 class="mb-2 text-center text-xl">Book an appointment on 
             <br/><span class="text-sm p-1 bg-red-300 font-semibold">@php
-            $result = $time_slots->get(0);
-            $date = \Carbon\Carbon::createFromFormat('Y-m-d', $result['date']);
-            echo $date->format('M d Y');
-
+            // echo $time_slots->isNotEmpty();
+            if($time_slots->isNotEmpty()){
+                $result = $time_slots->get(0);
+                $date = \Carbon\Carbon::createFromFormat('Y-m-d', $result['date']);
+                echo $date->format('M d Y');
+            } 
             @endphp
             </span>
         </h1>
@@ -29,7 +31,7 @@
                 
             </div>
         @empty
-            <div class="w-full bg-gray-200 p-2 m-1 text-sm">
+            <div class="w-full bg-gray-200 p-2 m-1 text-sm font-semibold text-center">
                 full booked / holiday
             </div>
         @endforelse

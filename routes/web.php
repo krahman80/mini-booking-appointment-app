@@ -4,6 +4,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UnavailableController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,3 +27,6 @@ Route::post('calendar/book', [HomeController::class, 'book'])->name('calendar.bo
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::post('login', [AuthController::class, 'loginAction'])->name('login');
 Route::post('logout', [AuthController::class, 'logout'])->middleware(['auth'])->name('logout');
+Route::middleware(['auth'])->group(function () {
+    Route::resource('unavailable', UnavailableController::class)->only(['index']);
+});

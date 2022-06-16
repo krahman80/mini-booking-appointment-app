@@ -14,30 +14,30 @@ class UnavailableTableSeeder extends Seeder
      */
     public function run()
     {
-        Unavailable::create(
-            [
-                'name' => 'lunch break',
-                'date' => '2022-05-23',
-                'start_time' => '12:00',
-                'end_time' => '13:00',
-            ]
-        );
 
         Unavailable::create([
-                'name' => 'sunday',
-                'date' => '2022-05-22',
-                'start_time' => '00:00',
-                'end_time' => '23:59',
+                'name' => 'saturday',
+                'date' => '2022-06-18',
             ],
         );
 
         Unavailable::create([
-                'name' => 'saturday',
-                'date' => '2022-05-21',
-                'start_time' => '00:00',
-                'end_time' => '23:59',
+                'name' => 'sunday',
+                'date' => '2022-06-19',
             ]
         );
 
+        Unavailable::create([
+                'name' => 'saturday',
+                'date' => '2022-06-25',
+            ],
+        );
+
+        Unavailable::create([
+                'name' => 'sunday',
+                'date' => '2022-06-26',
+            ]
+        );
+        
     }
 }

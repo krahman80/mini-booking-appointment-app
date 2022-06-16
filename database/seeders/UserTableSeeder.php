@@ -14,8 +14,14 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         \App\Models\User::factory()->count(1)->create([
-            'name' => 'user1',
-            'email' => 'user1@mail.com',
+            'name' => 'admin',
+            'email' => 'admin@mail.com',
+            'is_admin' => true,
+        ]);
+
+        \App\Models\User::factory()->count(1)->create([
+            'name' => 'user2',
+            'email' => 'user2@mail.com',
         ]);
 
     }

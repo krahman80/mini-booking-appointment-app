@@ -9,7 +9,12 @@
     <div>
         <ul class="flex list-style-none mr-auto">
             @auth()
-            <li class="p-1">
+              @if (auth()->user()->is_admin == true)
+                  <li class="py-1 px-2">
+                    <a href="{{ route('unavailable.index') }}">Manage Unavailable</a>
+                  </li>
+              @endif
+            <li class="py-1 px-2">
               <a href="{{ route('logout') }}" 
                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 Logout
@@ -17,9 +22,6 @@
               <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
               </form>
-            </li>
-            <li class="p-1">
-              Welcome, {{ auth()->user()->name }}
             </li>
             @endauth
             @guest
@@ -30,6 +32,20 @@
           </li>
 
         </ul>
+        {{-- @auth
+        <div class="mt-2 text-xs items-center flex justify-end">
+          <div>
+            hello, {{ auth()->user()->name }}
+          </div>
+        </div> 
+        @endauth --}}
     </div>
   </div>
+  @auth
+  <div class="mt-2 text-xs items-center flex justify-end">
+    <div>
+      hello, {{ auth()->user()->name }}
+    </div>
+  </div>  
+  @endauth
 </nav>
