@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Unavailable extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name', 'date'];
+
+    protected $dates = [
+        'date',
+    ];
 }

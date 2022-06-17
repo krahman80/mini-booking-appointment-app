@@ -5,3 +5,9 @@
         @endforeach
     </ul>
 @endif
+
+@if (session('message'))
+    <div class="text-center bg-green-400 p-2 my-2 text-white rounded-sm">
+        {{ session('message') }}
+    </div>    
+@endif

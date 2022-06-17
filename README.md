@@ -8,7 +8,8 @@
 * add booking table (field: date, start, end) (ok)
 * single date on show page (ok)
 * add login page for admin (ok)
+* manage unavailable date (crud)
 
-* manage unavailable date
+* add booking action
 * update env variable for defined time slot if not possible move it to database
 * manage booking data 

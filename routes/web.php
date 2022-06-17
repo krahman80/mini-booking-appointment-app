@@ -28,5 +28,5 @@ Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::post('login', [AuthController::class, 'loginAction'])->name('login');
 Route::post('logout', [AuthController::class, 'logout'])->middleware(['auth'])->name('logout');
 Route::middleware(['auth'])->group(function () {
-    Route::resource('unavailable', UnavailableController::class)->only(['index']);
+    Route::resource('unavailable', UnavailableController::class)->except(['show']);
 });

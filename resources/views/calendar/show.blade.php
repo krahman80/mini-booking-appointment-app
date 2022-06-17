@@ -35,7 +35,7 @@
                 full booked / holiday
             </div>
         @endforelse
-        <div class="mt-3">
+        <div class="mt-6">
             <a href="{{ url()->previous() }}" class="border px-2 py-1 mt-2 rounded">back</a>
         </div>
 

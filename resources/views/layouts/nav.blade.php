@@ -11,7 +11,7 @@
             @auth()
               @if (auth()->user()->is_admin == true)
                   <li class="py-1 px-2">
-                    <a href="{{ route('unavailable.index') }}">Manage Unavailable</a>
+                    <a href="{{ route('unavailable.index') }}">Unavailable</a>
                   </li>
               @endif
             <li class="py-1 px-2">

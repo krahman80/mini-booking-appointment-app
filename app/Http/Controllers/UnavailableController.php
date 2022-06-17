@@ -12,11 +12,14 @@ class UnavailableController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct() {
+        $this->middleware(['auth', 'admin'])->except('show');
+    } 
     public function index()
     {
-        $unavailable = Unavailable::paginate(10);
+        $unavailable = Unavailable::orderBy('id', 'desc')->paginate(10);
         // dd($unavailable);
-        
         // return "unavailable.index";
         return view('unavailable.index',['unavailable' => $unavailable]);
 
@@ -29,7 +32,7 @@ class UnavailableController extends Controller
      */
     public function create()
     {
-        //
+        return view('unavailable.create');
     }
 
     /**
@@ -40,7 +43,16 @@ class UnavailableController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required',
+            'date' => 'required|date|date_format:Y-m-d', 
+        ]);
+        
+        $unavailable = Unavailable::create($data);
+
+        // dd($unavailable);
+
+        return redirect()->route('unavailable.index')->with('message', 'Unavailable created!');
     }
 
     /**
@@ -60,9 +72,10 @@ class UnavailableController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Unavailable $unavailable)
     {
-        //
+        // dd($unavailable);
+        return view('unavailable.edit', ['unavailable' => $unavailable]);
     }
 
     /**
@@ -72,9 +85,21 @@ class UnavailableController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Unavailable $unavailable)
     {
-        //
+        
+        // dd($request->input());
+        $data = $request->validate([
+            'name' => 'required',
+            'date' => 'required|date|date_format:Y-m-d', 
+        ]);
+
+        $unavailable->update(
+            $data
+        );
+
+        // dd($unavailable);
+        return redirect()->route('unavailable.edit', $unavailable)->with('message', 'Unavailable updated!');
     }
 
     /**
@@ -85,6 +110,8 @@ class UnavailableController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $unavailable = Unavailable::find($id);
+        $unavailable->delete();
+        return redirect()->route('unavailable.index', $unavailable)->with('message', 'Unavailable deleted!');
     }
 }
