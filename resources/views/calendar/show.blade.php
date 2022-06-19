@@ -2,9 +2,9 @@
 @section('content')
 <div class="flex w-1/4 mx-auto justify-between p-2">
     
-    <div class="w-full bg-white p-6 rounded-sm">
+    <div class="w-full bg-white p-6 rounded-lg">
         <h1 class="mb-2 text-center text-xl">Book an appointment on 
-            <br/><span class="text-sm p-1 bg-red-300 font-semibold">@php
+            <br/><span class="text-sm py-1 px-2 bg-red-300 font-semibold rounded">@php
             // echo $time_slots->isNotEmpty();
             if($time_slots->isNotEmpty()){
                 $result = $time_slots->get(0);
@@ -17,7 +17,7 @@
         <h2 class="mb-2 text-center">Available Time Slot</h2>
         @include('layouts.msg')
         @forelse ($time_slots as $time)
-            <div class="w-full bg-gray-200 p-2 mt-1 text-sm flex justify-center items-center">
+            <div class="w-full bg-gray-200 p-2 mt-1 text-sm flex justify-center items-center rounded">
                 <div>
                     {{ $time['start'] . " - " . $time['end'] }}
                 </div>

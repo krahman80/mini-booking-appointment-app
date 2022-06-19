@@ -6,18 +6,23 @@
         @include('layouts.msg')
         <form action="{{ route('login') }}" method="post" class="mb-4">
             @csrf
-            <div>
+            <div class="my-2">
                 <label for="email" class="sr-only">Email</label>
-                <input type="text" name="email" class="w-full border p-1 my-1 border-black rounded-sm @error('body') border-red-500
-                @enderror focus:outline-none" placeholder="email">
+                <input type="text" name="email" class="w-full h-8 px-2 text-sm text-gray-700 placeholder-gray-600 border rounded-lg 
+                focus:outline-none focus:border-blue-600 focus:text-gray-700 
+                @error('body') border-red-500 @enderror" 
+                placeholder="email" 
+                >
             </div>
-            <div>
+            <div class="my-2">
                 <label for="password" class="sr-only">Password</label>
-                <input type="password" name="password" class="w-full border my-1 p-1 border-black rounded-sm @error('body') border-red-500
-                @enderror focus:outline-none" placeholder="password">
+                <input type="password" name="password" class="w-full h-8 px-2 text-sm text-gray-700 placeholder-gray-600 border rounded-lg 
+                focus:outline-none focus:border-blue-600 focus:text-gray-700 
+                @error('body') border-red-500 @enderror" 
+                placeholder="password">
             </div>
-            <div>
-                <input type="submit" value="login" class="w-full my-2 p-1 bg-blue-500 text-white rounded-sm">
+            <div class="my-2">
+                <input type="submit" value="login" class="w-full p-1 bg-blue-500 text-white rounded-lg">
             </div>
         </form>
     </div>

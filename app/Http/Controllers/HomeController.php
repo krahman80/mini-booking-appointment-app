@@ -68,7 +68,8 @@ class HomeController extends Controller
             'end' => $request->input('end'),
         ]);
 
-        dd($booking);
+        // dd($booking);
+        return redirect()->route('calendar')->with('message', 'Booking successed.Your booking id is '. $booking->ticket);
     }
    
 }
